@@ -1349,6 +1349,18 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.2.tgz#54c5a964462be3d4d78af631363c18d6fa91ac26"
   integrity sha512-yprFYuno9FtNsSHVlSWd+nRlmGoAbqbeCwOryP6sC/zoCjhpArcRMYp19EvpSUSizJAlsXEwJv+wcWS9XaXdMw==
 
+"@projectstorm/geometry@^6.0.0-beta.0":
+  version "6.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@projectstorm/geometry/-/geometry-6.0.0-beta.0.tgz#d2b39f9f5e13c678112e3628e81db69ebd80b24c"
+  integrity sha512-cou6v2+KHh1QSOGQFI739afNZ9h/ZQNkYJMvT1bQ2iHH11XO8MneYYiDHHmZMditZuyjl1k6CRYzZGCyfknXiw==
+
+"@projectstorm/react-canvas-core@^6.0.0-beta.0":
+  version "6.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@projectstorm/react-canvas-core/-/react-canvas-core-6.0.0-beta.0.tgz#b85a59a24759fbcc4dee5108f5dc20dbb99ad199"
+  integrity sha512-WJxWuAET8SxsyUMOZaqfUlNr/0ogRaFB+fP53+2HnWCMByegskxGHxxKUfnMKiDg+fo3WxJ6URm/MlU2tY/Msw==
+  dependencies:
+    "@projectstorm/geometry" "^6.0.0-beta.0"
+
 "@projectstorm/react-diagrams@^5.3.2":
   version "5.3.2"
   resolved "https://artifactory.corp.linkedin.com:8083/artifactory/api/npm/npm-all/@projectstorm/react-diagrams/-/@projectstorm/react-diagrams-5.3.2.tgz#1ff42cafc3f3877b917e848514afa6bf1b6d6f0f"
