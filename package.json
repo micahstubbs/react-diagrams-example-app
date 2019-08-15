@@ -40,6 +40,7 @@
     "jest-environment-jsdom-fourteen": "0.1.0",
     "jest-resolve": "24.7.1",
     "jest-watch-typeahead": "0.3.0",
+    "json-beautify": "^1.1.0",
     "lodash": "^4.17.15",
     "mathjs": "^6.0.4",
     "mini-css-extract-plugin": "0.5.0",
