@@ -10,7 +10,7 @@ import { CanvasWidget } from "@projectstorm/react-canvas-core";
 import { DemoCanvasWidget } from "../DemoCanvasWidget";
 import createNode from "../../utils/createNode";
 import connectNodes from "../../utils/connectNodes";
-import miserables from "../../data/miserables.json";
+import graph from "../../data/miserables.json";
 
 let count = 0;
 
@@ -73,35 +73,67 @@ export default () => {
   let model = new DiagramModel();
 
   //3) create a default nodes
-  let nodesFrom = [];
-  let nodesTo = [];
+  // let nodesFrom = [];
+  // let nodesTo = [];
 
-  nodesFrom.push(createNode("from-1"));
-  nodesFrom.push(createNode("from-2"));
-  nodesFrom.push(createNode("from-3"));
+  // nodesFrom.push(createNode("from-1"));
+  // nodesFrom.push(createNode("from-2"));
+  // nodesFrom.push(createNode("from-3"));
 
-  nodesTo.push(createNode("to-1"));
-  nodesTo.push(createNode("to-2"));
-  nodesTo.push(createNode("to-3"));
+  // nodesTo.push(createNode("to-1"));
+  // nodesTo.push(createNode("to-2"));
+  // nodesTo.push(createNode("to-3"));
+
+  // create an array to hold
+  // react-diagram's representation of the nodes
+  const nodes = [];
+  const nodesHash = {};
+  let reactDiagramNode;
+  graph.nodes.forEach(node => {
+    reactDiagramNode = createNode(node.id);
+    nodes.push(reactDiagramNode);
+    nodesHash[node.id] = reactDiagramNode;
+  });
 
   //4) link nodes together
-  let links = nodesFrom.map((node, index) => {
-    return connectNodes(node, nodesTo[index], engine, count++);
+  // let links = nodesFrom.map((node, index) => {
+  //   return connectNodes(node, nodesTo[index], engine, count++);
+  // });
+
+  // create an array to hold
+  // react-diagram's represenation of the links
+  const links = [];
+
+  let reactDiagramLink;
+  graph.links.forEach((link, i) => {
+    const sourceKey = "source";
+    const targetKey = "target";
+    const sourceNode = nodesHash[link[sourceKey]];
+    const targetNode = nodesHash[link[targetKey]];
+    reactDiagramLink = connectNodes(sourceNode, targetNode, engine, count++);
+    links.push(reactDiagramLink);
   });
 
   // more links for more complicated diagram
-  links.push(connectNodes(nodesFrom[0], nodesTo[1], engine, count++));
-  links.push(connectNodes(nodesTo[0], nodesFrom[1], engine, count++));
-  links.push(connectNodes(nodesFrom[1], nodesTo[2], engine, count++));
+  // links.push(connectNodes(nodesFrom[0], nodesTo[1], engine, count++));
+  // links.push(connectNodes(nodesTo[0], nodesFrom[1], engine, count++));
+  // links.push(connectNodes(nodesFrom[1], nodesTo[2], engine, count++));
 
-  // initial random position
-  nodesFrom.forEach((node, index) => {
-    node.setPosition(index * 70, index * 70);
-    model.addNode(node);
-  });
+  //
+  // set initial position for each node
+  //
+  // nodesFrom.forEach((node, index) => {
+  //   node.setPosition(index * 70, index * 70);
+  //   model.addNode(node);
+  // });
 
-  nodesTo.forEach((node, index) => {
-    node.setPosition(index * 70, 100);
+  // nodesTo.forEach((node, index) => {
+  //   node.setPosition(index * 70, 100);
+  //   model.addNode(node);
+  // });
+
+  nodes.forEach((node, i) => {
+    node.setPosition(i * 70, i * 70);
     model.addNode(node);
   });
 
