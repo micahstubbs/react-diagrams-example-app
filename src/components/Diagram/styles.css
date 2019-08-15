@@ -1,15 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-html,
-body,
-#application {
-  height: 100%;
-  overflow: hidden;
-}
-
 .diagram-container {
   background: #333333;
   width: 100%;
