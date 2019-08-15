@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import Diagram from "./components/Diagram/";
+import SimpleDiagram from "./components/SimpleDiagram/";
 
 function App() {
   return (
     <div className="App">
-      <Diagram />
+      <SimpleDiagram />
     </div>
   );
 }
