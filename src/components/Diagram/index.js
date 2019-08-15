@@ -9,7 +9,7 @@ import { DemoCanvasWidget } from "../DemoCanvasWidget";
 
 export default () => {
   //1) setup the diagram engine
-  var engine = new createEngine();
+  var engine = createEngine();
 
   //2) setup the diagram model
   var model = new DiagramModel();
