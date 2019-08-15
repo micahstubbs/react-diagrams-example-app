@@ -10,7 +10,7 @@ import createEngine, {
 class Diagram extends Component {
   render() {
     // create an instance of the engine with all the defaults
-    const engine = createEngine();
+    const engine = new createEngine();
 
     // node 1
     const node1 = new DefaultNodeModel({
