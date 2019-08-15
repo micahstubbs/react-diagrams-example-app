@@ -37,7 +37,7 @@ export const DemoButton = styled.button`
   }
 `;
 
-export default class DemoWorkspaceWidget extends React.Component {
+export class DemoWorkspaceWidget extends React.Component {
   render() {
     return (
       <Container>

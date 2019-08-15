@@ -1,6 +1,6 @@
 import createEngine, { DiagramModel } from "@projectstorm/react-diagrams";
 import * as React from "react";
-import DemoWorkspaceWidget from "../DemoWorkspaceWidget";
+import { DemoWorkspaceWidget } from "../DemoWorkspaceWidget";
 import { CanvasWidget } from "@projectstorm/react-canvas-core";
 import { DemoCanvasWidget } from "../DemoCanvasWidget";
 

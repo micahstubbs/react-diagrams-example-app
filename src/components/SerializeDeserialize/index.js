@@ -3,7 +3,7 @@ import createEngine, {
   DefaultNodeModel
 } from "@projectstorm/react-diagrams";
 import * as React from "react";
-import DemoWorkspaceWidget, { DemoButton } from "../DemoWorkspaceWidget";
+import { DemoButton, DemoWorkspaceWidget } from "../DemoWorkspaceWidget";
 import * as beautify from "json-beautify";
 import { CanvasWidget } from "@projectstorm/react-canvas-core";
 import { DemoCanvasWidget } from "../DemoCanvasWidget";
