@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the command:
+
+```bash
+npx create-react-app react-diagrams-example-app --typescript
+```
 
 ## Available Scripts
 
