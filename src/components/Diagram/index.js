@@ -1,48 +1,43 @@
-import createEngine, {
-  DiagramModel,
-  DefaultNodeModel,
-  DefaultLinkModel
-} from "@projectstorm/react-diagrams";
 import * as React from "react";
-import { CanvasWidget } from "@projectstorm/react-canvas-core";
-import { DemoCanvasWidget } from "../DemoCanvasWidget";
+import "./styles.css";
+import createEngine, {
+  DefaultLinkModel,
+  DiagramModel
+} from "@projectstorm/react-diagrams";
+import { JSCustomNodeFactory } from "../JSCustomNodeFactory";
+import { JSCustomNodeModel } from "../JSCustomNodeModel";
 
-export default () => {
-  //1) setup the diagram engine
-  var engine = new createEngine();
+import { BodyWidget } from "../BodyWidget";
 
-  //2) setup the diagram model
-  var model = new DiagramModel();
+export default function Diagram() {
+  // create an instance of the engine
+  const engine = createEngine();
 
-  //3-A) create a default node
-  var node1 = new DefaultNodeModel({
-    name: "Node 1",
-    color: "rgb(0,192,255)"
-  });
-  node1.setPosition(100, 100);
-  let port1 = node1.addOutPort("Out");
+  // register the two engines
+  engine.getNodeFactories().registerFactory(new JSCustomNodeFactory());
 
-  //3-B) create another default node
-  var node2 = new DefaultNodeModel("Node 2", "rgb(192,255,0)");
-  let port2 = node2.addInPort("In");
-  node2.setPosition(400, 100);
+  // create a diagram model
+  const model = new DiagramModel();
 
-  // link the ports
-  let link1 = port1.link(port2);
-  console.log("link1", link1);
-  // link1.getOptions().testName = "Test";
-  link1.addLabel("Hello World!");
+  //####################################################
+  // now create two nodes of each type, and connect them
 
-  //4) add the models to the root graph
+  const node1 = new JSCustomNodeModel({ color: "rgb(192,255,0)" });
+  node1.setPosition(50, 50);
+
+  const node2 = new JSCustomNodeModel({ color: "rgb(0,192,255)" });
+  node2.setPosition(200, 50);
+
+  const link1 = new DefaultLinkModel();
+  link1.setSourcePort(node1.getPort("out"));
+  link1.setTargetPort(node2.getPort("in"));
+
   model.addAll(node1, node2, link1);
 
-  //5) load model into engine
+  //####################################################
+
+  // install the model into the engine
   engine.setModel(model);
 
-  //6) render the diagram!
-  return (
-    <DemoCanvasWidget>
-      <CanvasWidget engine={engine} />
-    </DemoCanvasWidget>
-  );
-};
+  return <BodyWidget engine={engine} />;
+}
