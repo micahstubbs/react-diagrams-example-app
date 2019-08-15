@@ -4,12 +4,13 @@ import "./App.css";
 // import SerializeDeserialize from "./components/SerializeDeserialize";
 // import DiagramFromJson from "./components/DiagramFromJson";
 // import ProgramaticallyModify from "./components/ProgramaticallyModify";
-import AutoLayoutDagre from "./components/AutoLayoutDagre";
+// import AutoLayoutDagre from "./components/AutoLayoutDagre";
+import DiagramFromD3Json from "./components/DiagramFromD3Json";
 
 function App() {
   return (
     <div className="App">
-      <AutoLayoutDagre />
+      <DiagramFromD3Json />
     </div>
   );
 }

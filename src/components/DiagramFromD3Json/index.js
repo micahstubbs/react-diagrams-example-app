@@ -1,6 +1,5 @@
 import createEngine, {
   DiagramModel,
-  DefaultNodeModel,
   DefaultPortModel,
   DagreEngine,
   PathFindingLinkFactory
@@ -9,31 +8,11 @@ import * as React from "react";
 import { DemoButton, DemoWorkspaceWidget } from "../DemoWorkspaceWidget";
 import { CanvasWidget } from "@projectstorm/react-canvas-core";
 import { DemoCanvasWidget } from "../DemoCanvasWidget";
-
-function createNode(name) {
-  return new DefaultNodeModel(name, "rgb(0,192,255)");
-}
+import createNode from "../../utils/createNode";
+import connectNodes from "../../utils/connectNodes";
+import miserables from "../../data/miserables.json";
 
 let count = 0;
-
-function connectNodes(nodeFrom, nodeTo, engine) {
-  //just to get id-like structure
-  count++;
-  const portOut = nodeFrom.addPort(
-    new DefaultPortModel(true, `${nodeFrom.name}-out-${count}`, "Out")
-  );
-  const portTo = nodeTo.addPort(
-    new DefaultPortModel(false, `${nodeFrom.name}-to-${count}`, "IN")
-  );
-  return portOut.link(portTo);
-
-  // ################# UNCOMMENT THIS LINE FOR PATH FINDING #############################
-  // return portOut.link(
-  //   portTo,
-  //   engine.getLinkFactories().getFactory(PathFindingLinkFactory.NAME)
-  // );
-  // #####################################################################################
-}
 
 /**
  * Tests auto distribution
@@ -107,13 +86,13 @@ export default () => {
 
   //4) link nodes together
   let links = nodesFrom.map((node, index) => {
-    return connectNodes(node, nodesTo[index], engine);
+    return connectNodes(node, nodesTo[index], engine, count++);
   });
 
   // more links for more complicated diagram
-  links.push(connectNodes(nodesFrom[0], nodesTo[1], engine));
-  links.push(connectNodes(nodesTo[0], nodesFrom[1], engine));
-  links.push(connectNodes(nodesFrom[1], nodesTo[2], engine));
+  links.push(connectNodes(nodesFrom[0], nodesTo[1], engine, count++));
+  links.push(connectNodes(nodesTo[0], nodesFrom[1], engine, count++));
+  links.push(connectNodes(nodesFrom[1], nodesTo[2], engine, count++));
 
   // initial random position
   nodesFrom.forEach((node, index) => {
