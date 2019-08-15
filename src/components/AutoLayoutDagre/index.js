@@ -49,7 +49,7 @@ class DemoWidget extends React.Component {
     });
   }
 
-  autoDistribute = () => {
+  autoLayout = () => {
     this.engine.redistribute(this.props.model);
 
     // only happens if pathfing is enabled (check line 25)
@@ -59,7 +59,7 @@ class DemoWidget extends React.Component {
 
   componentDidMount() {
     setTimeout(() => {
-      this.autoDistribute();
+      this.autoLayout();
     }, 500);
   }
 
@@ -73,9 +73,7 @@ class DemoWidget extends React.Component {
   render() {
     return (
       <DemoWorkspaceWidget
-        buttons={
-          <DemoButton onClick={this.autoDistribute}>Re-distribute</DemoButton>
-        }
+        buttons={<DemoButton onClick={this.autoLayout}>Re-layout</DemoButton>}
       >
         <DemoCanvasWidget>
           <CanvasWidget engine={this.props.engine} />
