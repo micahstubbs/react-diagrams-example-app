@@ -3,12 +3,13 @@ import "./App.css";
 // import SimpleDiagram from "./components/SimpleDiagram/";
 // import SerializeDeserialize from "./components/SerializeDeserialize";
 // import DiagramFromJson from "./components/DiagramFromJson";
-import ProgramaticallyModify from "./components/ProgramaticallyModify";
+// import ProgramaticallyModify from "./components/ProgramaticallyModify";
+import AutoLayoutDagre from "./components/AutoLayoutDagre";
 
 function App() {
   return (
     <div className="App">
-      <ProgramaticallyModify />
+      <AutoLayoutDagre />
     </div>
   );
 }
