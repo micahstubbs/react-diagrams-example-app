@@ -1,19 +1,28 @@
-import { DefaultPortModel } from "@projectstorm/react-diagrams";
+import {
+  DefaultPortModel,
+  PathFindingLinkFactory
+} from "@projectstorm/react-diagrams";
 
-export default function(nodeFrom, nodeTo, engine, count) {
+export default function({
+  sourceNode,
+  targetNode,
+  engine,
+  count,
+  pathFinding
+}) {
   //just to get id-like structure
-  const portOut = nodeFrom.addPort(
-    new DefaultPortModel(true, `${nodeFrom.name}-out-${count}`, "Out")
+  const sourcePort = sourceNode.addPort(
+    new DefaultPortModel(true, `${sourceNode.name}-out-${count}`, "Out")
   );
-  const portTo = nodeTo.addPort(
-    new DefaultPortModel(false, `${nodeFrom.name}-to-${count}`, "IN")
+  const targetPort = targetNode.addPort(
+    new DefaultPortModel(false, `${sourceNode.name}-to-${count}`, "IN")
   );
-  return portOut.link(portTo);
 
-  // ################# UNCOMMENT THIS LINE FOR PATH FINDING #############################
-  // return portOut.link(
-  //   portTo,
-  //   engine.getLinkFactories().getFactory(PathFindingLinkFactory.NAME)
-  // );
-  // #####################################################################################
+  if (pathFinding) {
+    return sourcePort.link(
+      targetPort,
+      engine.getLinkFactories().getFactory(PathFindingLinkFactory.NAME)
+    );
+  }
+  return sourcePort.link(targetPort);
 }

@@ -1,6 +1,5 @@
 import createEngine, {
   DiagramModel,
-  DefaultPortModel,
   DagreEngine,
   PathFindingLinkFactory
 } from "@projectstorm/react-diagrams";
@@ -110,7 +109,13 @@ export default () => {
     const targetKey = "target";
     const sourceNode = nodesHash[link[sourceKey]];
     const targetNode = nodesHash[link[targetKey]];
-    reactDiagramLink = connectNodes(sourceNode, targetNode, engine, count++);
+    reactDiagramLink = connectNodes({
+      sourceNode,
+      targetNode,
+      engine,
+      count: count++,
+      pathFinding: false
+    });
     links.push(reactDiagramLink);
   });
 
