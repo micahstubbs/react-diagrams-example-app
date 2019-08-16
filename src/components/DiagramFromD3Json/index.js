@@ -33,7 +33,7 @@ class DemoWidget extends React.Component {
   autoLayout = () => {
     this.engine.redistribute(this.props.model);
 
-    // only happens if pathfing is enabled (check line 25)
+    // only happens if pathfinding is enabled (check line 25)
     this.reroute();
     this.props.engine.repaintCanvas();
   };
@@ -85,7 +85,6 @@ export default () => {
   });
 
   //! 4) link nodes together
-
   // create an array to hold
   // react-diagram's represenation of the links
   const links = [];
